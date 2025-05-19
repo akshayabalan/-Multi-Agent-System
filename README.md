@@ -155,7 +155,7 @@ Memory Persistence: Agent memories are stored in the memory_db directory. This a
 
 Failsafe Mechanism: The delegate_task function includes a basic failsafe to prevent potential infinite delegation loops.
 
-##Future Improvements / TODOs
+### Future Improvements / TODOs
 
 Implement more robust API key management (e.g., require .env file).
 
