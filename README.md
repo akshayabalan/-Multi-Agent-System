@@ -110,7 +110,7 @@ The script `prototype2.py` is currently set up to run a predefined task:
 To run the script:
 ```bash
 python prototype2.py
-
+...
 
 ## Key Components & Files
 prototype2.py: The main script containing all agent definitions, tools, memory management, and the workflow logic.
