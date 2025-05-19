@@ -17,7 +17,7 @@ def get_current_code():
         return f.read()
 llm = ChatGroq(
     model_name="Llama3-70b-8192",
-    groq_api_key="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",
+    groq_api_key="Chat_Groq_Key",
     temperature=0.1,  
     max_tokens=6000,  
 )
@@ -330,8 +330,7 @@ You also have access to the user's related memories or previous interactions:
 {memory_context or '[No prior memory available]'}
 
 Using this context, figure out the best possible response, BUT don't just copy previous answers.
-Reason and respond meaningfully based on both memory and the current input.
-"""
+Reason and respond meaningfully based on both memory and the current input."""
 
     result = delegate_task(enriched_input)
 
