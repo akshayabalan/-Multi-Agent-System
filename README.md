@@ -111,38 +111,64 @@ To run the script:
 ```bash
 python prototype2.py
 
-The script will print the final result of the workflow to the console.
-A memory_db directory will be created in the same location as the script to store the ChromaDB persistent data.
-Key Components & Files
+
+## Key Components & Files
 prototype2.py: The main script containing all agent definitions, tools, memory management, and the workflow logic.
 memory_db/ (directory): Created automatically by ChromaDB to persist agent memories. Can be safely deleted if you want to reset memory, but it will be recreated on the next run.
-Agents:
-llm (Heart): ChatGroq instance for core LLM interactions.
-Main_Agent: Orchestrates tasks and delegates.
-Parent_AI_Agent: Executes code and manages sub-tasks.
-Child1_Agent: Analyzes errors in code execution.
-Memory:
-MemoryManager: Class to manage ChromaDB instances.
-AgentLogger: Class for individual agent memory and interaction with shared memory.
-Tools:
-run_exec: Executes arbitrary Python code. Use with extreme caution due to security risks.
-DuckDuckGoSearchRun: Performs web searches.
-save_to_file: Saves content to a specified file.
-PythonREPLTool: Standard Langchain tool for Python code execution.
-Delegate (custom tool): Wraps the delegate_task function for the Main Agent.
-Important Notes & Caveats
-Security Risk (run_exec tool): The run_exec tool allows arbitrary Python code execution. This is a significant security risk if the system is exposed to untrusted input. Use with extreme caution and consider sandboxing or replacing with safer alternatives for production environments.
-API Key Security: Ensure your Groq API key is kept confidential and not committed to public repositories. Use environment variables or a secure secret management system.
-Model Dependency: The system is configured to use Llama3-70b-8192 via Groq. Performance and behavior may vary with other models.
-Memory Persistence: Agent memories are stored in the memory_db directory. This allows the system to retain knowledge across sessions.
-Failsafe Mechanism: The delegate_task function includes a basic failsafe to prevent potential infinite delegation loops.
-Future Improvements / TODOs
-Implement more robust API key management (e.g., require .env file).
-Enhance the security of code execution (e.g., sandboxing environment for run_exec).
-Develop a more sophisticated task planning and decomposition mechanism in the Main_Agent.
-Expand the toolset available to agents.
-Add more comprehensive error handling and recovery strategies.
-Implement unit and integration tests.
-Allow for dynamic configuration of agents and models (e.g., via a config file).
-Explore UI or API interfaces for interacting with the system.
 
+### Agents:
+llm (Heart): ChatGroq instance for core LLM interactions.
+
+Main_Agent: Orchestrates tasks and delegates.
+
+Parent_AI_Agent: Executes code and manages sub-tasks.
+
+Child1_Agent: Analyzes errors in code execution.
+
+### Memory:
+
+MemoryManager: Class to manage ChromaDB instances.
+
+AgentLogger: Class for individual agent memory and interaction with shared memory.
+
+### Tools:
+
+run_exec: Executes arbitrary Python code. Use with extreme caution due to security risks.
+
+DuckDuckGoSearchRun: Performs web searches.
+
+save_to_file: Saves content to a specified file.
+
+PythonREPLTool: Standard Langchain tool for Python code execution.
+
+Delegate (custom tool): Wraps the delegate_task function for the Main Agent.
+
+### Important Notes & Caveats
+
+Security Risk (run_exec tool): The run_exec tool allows arbitrary Python code execution. This is a significant security risk if the system is exposed to untrusted
+input. Use with extreme caution and consider sandboxing or replacing with safer alternatives for production environments.
+API Key Security: Ensure your Groq API key is kept confidential and not committed to public repositories. Use environment variables or a secure secret management system.
+
+Model Dependency: The system is configured to use Llama3-70b-8192 via Groq. Performance and behavior may vary with other models.
+
+Memory Persistence: Agent memories are stored in the memory_db directory. This allows the system to retain knowledge across sessions.
+
+Failsafe Mechanism: The delegate_task function includes a basic failsafe to prevent potential infinite delegation loops.
+
+##Future Improvements / TODOs
+
+Implement more robust API key management (e.g., require .env file).
+
+Enhance the security of code execution (e.g., sandboxing environment for run_exec).
+
+Develop a more sophisticated task planning and decomposition mechanism in the Main_Agent.
+
+Expand the toolset available to agents.
+
+Add more comprehensive error handling and recovery strategies.
+
+Implement unit and integration tests.
+
+Allow for dynamic configuration of agents and models (e.g., via a config file).
+
+Explore UI or API interfaces for interacting with the system.
